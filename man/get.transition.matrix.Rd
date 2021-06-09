@@ -24,4 +24,8 @@ Given a series of states, computes the transition probability matrix or returns 
 states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
 # Create transition probability matrix
 x <- get.transition.matrix(states, option='prob', output_type='matrix')
+
+}
+\seealso{
+\code{\link{get.transitions}}, \code{\link{get.steady.state}}
 }

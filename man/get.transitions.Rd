@@ -22,6 +22,10 @@ Given a series of states, calculates all possible transitions and returns a data
 \examples{
 # Generate random sequence of states
 states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
-# Calculate transition probabiltiies
+# Calculate transition probabilities
 get.transitions(states, option='prob')
+
+}
+\seealso{
+\code{\link{get.transition.matrix}}
 }

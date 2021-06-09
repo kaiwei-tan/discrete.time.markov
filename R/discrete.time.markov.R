@@ -16,8 +16,10 @@
 #' @examples
 #' # Generate random sequence of states
 #' states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
-#' # Calculate transition probabiltiies
+#' # Calculate transition probabilities
 #' get.transitions(states, option='prob')
+#'
+#' @seealso \code{\link{get.transition.matrix}}
 get.transitions <- function(states, option='prob') {
 
   # List of transitions
@@ -73,12 +75,16 @@ get.transitions <- function(states, option='prob') {
 #'
 #' @import dplyr
 #' @importFrom magrittr %>%
+#' @importFrom reshape2 dcast
 #'
 #' @examples
 #' # Generate random sequence of states
 #' states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
 #' # Create transition probability matrix
 #' x <- get.transition.matrix(states, option='prob', output_type='matrix')
+#'
+#' @seealso
+#' \code{\link{get.transitions}}, \code{\link{get.steady.state}}
 get.transition.matrix <- function(states, option='prob', output_type='matrix') {
   transitions_df <- get.transitions(states, option=option)
 
@@ -104,7 +110,7 @@ get.transition.matrix <- function(states, option='prob', output_type='matrix') {
   }
 
   # Convert data frame from long to wide, hence obtaining our transition matrix
-  transition_matrix_df <- reshape2::dcast(transitions_df, start ~ end, value.var=colnames(transitions_df)[3])
+  transition_matrix_df <- dcast(transitions_df, start ~ end, value.var=colnames(transitions_df)[3])
 
   # Will generate NAs where zeros are supposed to be, hence replace them
   transition_matrix_df[is.na(transition_matrix_df)] <- 0
