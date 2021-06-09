@@ -4,7 +4,6 @@
 # discrete.time.markov
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 Applies the discrete time Markov model (Markov chain) to analyze data by
@@ -17,7 +16,7 @@ Business School.
 ## Installation
 
 You can install the released version of discrete.time.markov from my
-[GitHub](https://github.com/kaiwei-tan) with:
+[GitHub](https://github.com/kaiwei-tan/discrete.time.markov) with:
 
 ``` r
 library(devtools)

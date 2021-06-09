@@ -24,7 +24,7 @@ Inspired by my Stochastic Models in Management module, as well as my Honors Diss
 
 ## Installation
 
-You can install the released version of discrete.time.markov from my [GitHub](https://github.com/kaiwei-tan) with:
+You can install the released version of discrete.time.markov from my [GitHub](https://github.com/kaiwei-tan/discrete.time.markov) with:
 
 ``` r
 library(devtools)
