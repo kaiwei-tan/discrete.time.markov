@@ -1,7 +1,7 @@
 Package: discrete.time.markov
 Type: Package
 Title: Applies Discrete Time Markov Model
-Version: 0.1.0
+Version: 0.2.0
 Author: Kai Wei Tan <kaiwei@u.nus.edu>
 Maintainer: Kai Wei Tan <kaiwei@u.nus.edu>
 Description: Applies the discrete time Markov model (Markov chain) to analyze data by computing probabilties of transitions between different states.
