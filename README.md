@@ -6,12 +6,13 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-Applies the discrete time Markov model (Markov chain) to analyze data by
-computing probabilties of transitions between different states.
+Applies the discrete time Markov model (Markov chain) to analyze data
+(both text and non-text) by computing probabilities of transitions
+between different states.
 
 Inspired by my Stochastic Models in Management module, as well as my
-Honors Dissertation, taken in the National University of Singapore (NUS)
-Business School.
+Honors Dissertation, as part of my coursework in the National University
+of Singapore (NUS) Business School.
 
 ## Installation
 
@@ -101,14 +102,6 @@ get a state transition diagram:
 ``` r
 library(magrittr)
 library(igraph)
-#> 
-#> Attaching package: 'igraph'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     decompose, spectrum
-#> The following object is masked from 'package:base':
-#> 
-#>     union
 
 lyrics <- c('never gonna give you up', 'never gonna let you down')
 

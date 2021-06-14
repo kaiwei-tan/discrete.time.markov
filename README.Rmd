@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Applies the discrete time Markov model (Markov chain) to analyze data by computing probabilties of transitions between different states.
+Applies the discrete time Markov model (Markov chain) to analyze data (both text and non-text) by computing probabilities of transitions between different states.
 
-Inspired by my Stochastic Models in Management module, as well as my Honors Dissertation, taken in the National University of Singapore (NUS) Business School.
+Inspired by my Stochastic Models in Management module, as well as my Honors Dissertation, as part of my coursework in the National University of Singapore (NUS) Business School.
 
 ## Installation
 
@@ -61,7 +61,7 @@ get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', pun
 ```
 
 We can also use the output of \code{get.transitions.text} (for text data) or \code{get.transitions} (for non-text), which return a dataframe of state transitions and their probabilities, with \code{igraph::graph_from_data_frame} to get a state transition diagram:
-```{r example4, warning=FALSE, fig.width=8, fig.height=8}
+```{r example4, warning=FALSE, message=FALSE, fig.width=8, fig.height=8}
 library(magrittr)
 library(igraph)
 
