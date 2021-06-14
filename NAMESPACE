@@ -2,7 +2,11 @@
 
 export(get.steady.state)
 export(get.transition.matrix)
+export(get.transition.matrix.text)
 export(get.transitions)
+export(get.transitions.list.text)
+export(get.transitions.text)
 import(dplyr)
 importFrom(magrittr,"%>%")
 importFrom(reshape2,dcast)
+importFrom(stringr,str_squish)

@@ -2,7 +2,9 @@
 #'
 #' @description Given a series of states, calculates all possible transitions and returns a dataframe of counts or transition probabilities sorted by start state and end state.
 #'
-#'   This output is useful for subsequently drawing state transition diagrams using \code{\link{igraph::graph_from_data_frame}}.
+#' @details The output for this function is useful for subsequently drawing state transition diagrams using \code{\link{igraph::graph_from_data_frame}}.
+#'
+#' To get a transition probability matrix instead, use \code{\link{get.transition.matrix}}.
 #'
 #' @param states a \emph{vector} with values corresponding to states in a Markov chain model.
 #' @param option if \code{0} or \code{"prob"}, returns transition probabilites; if \code{1} or \code{"count"}, returns counts of each transition from the data.
@@ -28,9 +30,6 @@ get.transitions <- function(states, option='prob') {
     transitions_list$start <- c(transitions_list$start, states[i])
     transitions_list$end <- c(transitions_list$end, states[i+1])
   }
-
-  # List of all states
-  states_list <- unique(states) %>% sort()
 
   # Count transitions for each start and end state
   transitions_df <-
@@ -65,6 +64,8 @@ get.transitions <- function(states, option='prob') {
 #' @title Computes Transition Probability Matrix
 #'
 #' @description Given a series of states, computes the transition probability matrix or returns a matrix of transition counts.
+#'
+#' @details Use \code{\link{get.steady.state}} on the output of this function to compute steady-state / long-run probabilities for each state.
 #'
 #' @param states a \emph{vector} with values corresponding to states in a Markov chain model.
 #' @param option if \code{0} or \code{"prob"}, returns transition probabilites; if \code{1} or \code{"count"}, returns counts of each transition from the data.

@@ -16,8 +16,11 @@ A dataframe containing either transition probabilities or counts.
 }
 \description{
 Given a series of states, calculates all possible transitions and returns a dataframe of counts or transition probabilities sorted by start state and end state.
+}
+\details{
+The output for this function is useful for subsequently drawing state transition diagrams using \code{\link{igraph::graph_from_data_frame}}.
 
-  This output is useful for subsequently drawing state transition diagrams using \code{\link{igraph::graph_from_data_frame}}.
+To get a transition probability matrix instead, use \code{\link{get.transition.matrix}}.
 }
 \examples{
 # Generate random sequence of states

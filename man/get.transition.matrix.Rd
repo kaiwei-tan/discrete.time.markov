@@ -19,6 +19,9 @@ A matrix or dataframe containing transition probabilities or counts.
 \description{
 Given a series of states, computes the transition probability matrix or returns a matrix of transition counts.
 }
+\details{
+Use \code{\link{get.steady.state}} on the output of this function to compute steady-state / long-run probabilities for each state.
+}
 \examples{
 # Generate random sequence of states
 states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
