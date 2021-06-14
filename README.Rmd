@@ -31,15 +31,46 @@ library(devtools)
 install_github("kaiwei-tan/discrete.time.markov")
 ```
 
-## Example
+## Examples
 
 This is a basic example, where we generate a random sequence of states and calculate their transition probabilities:
-
-```{r example}
+```{r example1}
 library(discrete.time.markov)
+
 # Generate random sequence of states
 set.seed(57)
 states <- sample(c('up', 'down', 'same'), 10000, replace=TRUE)
+
 # Create transition probability matrix
 get.transition.matrix(states, option='prob', output_type='matrix')
+```
+
+Here is another example involving text. Let each word in our example sentence be considered as a state, and we calculate their transition probabilities accordingly:
+```{r example2}
+sentence <- 'the quick, brown fox jumps over the lazy dog.'
+
+# Function ignores mid-sentence punctuation i.e. the comma
+# Create transition probability matrix
+get.transition.matrix.text(sentence, 1, option='prob', output_type='matrix', punct='none')
+```
+
+Now let's see what happens when we consider two words in a state and involve the period at the end (ignoring mid-sentence punctuation, each symbol counts as a state regardless of the number of words considered as a state).
+```{r example3}
+# Create transition probability matrix
+get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', punct='end')
+```
+
+We can also use the output of \code{get.transitions.text} (for text data) or \code{get.transitions} (for non-text), which return a dataframe of state transitions and their probabilities, with \code{igraph::graph_from_data_frame} to get a state transition diagram:
+```{r example4, warning=FALSE, fig.width=8, fig.height=8}
+library(magrittr)
+library(igraph)
+
+lyrics <- c('never gonna give you up', 'never gonna let you down')
+
+# Create dataframe of state transitions and probabilities
+lyrics_transitions <- get.transitions.text(lyrics, 1, option='prob', punct='none')
+
+# Plot graph
+igraph::graph_from_data_frame(lyrics_transitions) %>%
+  plot(edge.label=lyrics_transitions$prob, vertex.color='white')
 ```
