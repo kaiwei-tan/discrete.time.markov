@@ -24,6 +24,19 @@ library(devtools)
 install_github("kaiwei-tan/discrete.time.markov")
 ```
 
+## Functionality
+
+This package contains the following functions:
+
+-   `get.transitions`: creates dataframe of all state transition
+    probabilities
+-   `get.transitions.text`: text version of `get.transitions`
+-   `get.transition.matrix`: creates transition probability matrix
+-   `get.transition.matrix.text`: text version of
+    `get.transition.matrix`
+-   `get.steady.state`: calculates steady-state / long-run probabilities
+    of all states
+
 ## Examples
 
 This is a basic example, where we generate a random sequence of states
@@ -95,9 +108,10 @@ get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', pun
 #> the quick          0         0
 ```
 
-We can also use the output of (for text data) or (for non-text), which
-return a dataframe of state transitions and their probabilities, with to
-get a state transition diagram:
+We can also use the output of `get.transitions.text` (for text data) or
+`get.transitions` (for non-text), which return a dataframe of state
+transitions and their probabilities, with to get a state transition
+diagram:
 
 ``` r
 library(magrittr)
@@ -107,6 +121,17 @@ lyrics <- c('never gonna give you up', 'never gonna let you down')
 
 # Create dataframe of state transitions and probabilities
 lyrics_transitions <- get.transitions.text(lyrics, 1, option='prob', punct='none')
+lyrics_transitions
+#> # A tibble: 7 x 3
+#>   start_state end_state  prob
+#>   <chr>       <chr>     <dbl>
+#> 1 give        you         1  
+#> 2 gonna       give        0.5
+#> 3 gonna       let         0.5
+#> 4 let         you         1  
+#> 5 never       gonna       1  
+#> 6 you         down        0.5
+#> 7 you         up          0.5
 
 # Plot graph
 igraph::graph_from_data_frame(lyrics_transitions) %>%

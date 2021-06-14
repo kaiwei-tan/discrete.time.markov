@@ -30,6 +30,14 @@ You can install the released version of discrete.time.markov from my [GitHub](ht
 library(devtools)
 install_github("kaiwei-tan/discrete.time.markov")
 ```
+## Functionality
+This package contains the following functions:
+
+* `get.transitions`: creates dataframe of all state transition probabilities
+* `get.transitions.text`: text version of `get.transitions`
+* `get.transition.matrix`: creates transition probability matrix
+* `get.transition.matrix.text`: text version of `get.transition.matrix`
+* `get.steady.state`: calculates steady-state / long-run probabilities of all states
 
 ## Examples
 
@@ -60,7 +68,7 @@ Now let's see what happens when we consider two words in a state and involve the
 get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', punct='end')
 ```
 
-We can also use the output of \code{get.transitions.text} (for text data) or \code{get.transitions} (for non-text), which return a dataframe of state transitions and their probabilities, with \code{igraph::graph_from_data_frame} to get a state transition diagram:
+We can also use the output of `get.transitions.text` (for text data) or `get.transitions` (for non-text), which return a dataframe of state transitions and their probabilities, with \code{igraph::graph_from_data_frame} to get a state transition diagram:
 ```{r example4, warning=FALSE, message=FALSE, fig.width=8, fig.height=8}
 library(magrittr)
 library(igraph)
@@ -69,6 +77,7 @@ lyrics <- c('never gonna give you up', 'never gonna let you down')
 
 # Create dataframe of state transitions and probabilities
 lyrics_transitions <- get.transitions.text(lyrics, 1, option='prob', punct='none')
+lyrics_transitions
 
 # Plot graph
 igraph::graph_from_data_frame(lyrics_transitions) %>%
