@@ -39,7 +39,7 @@ This package contains the following functions:
 
 ## Examples
 
-This is a basic example, where we generate a random sequence of states
+Here is a basic example, where we generate a random sequence of states
 and calculate their transition probabilities:
 
 ``` r
@@ -64,7 +64,7 @@ probabilities accordingly:
 ``` r
 sentence <- 'the quick, brown fox jumps over the lazy dog.'
 
-# Function ignores mid-sentence punctuation i.e. the comma
+# Function ignores all punctuation
 # Create transition probability matrix
 get.transition.matrix.text(sentence, 1, option='prob', output_type='matrix', punct='none')
 #>       brown dog fox jumps lazy over quick the
@@ -78,12 +78,13 @@ get.transition.matrix.text(sentence, 1, option='prob', output_type='matrix', pun
 #> the       0   0   0     0  0.5    0   0.5   0
 ```
 
-Now let’s see what happens when we consider two words in a state and
-involve the period at the end (ignoring mid-sentence punctuation, each
-symbol counts as a state regardless of the number of words considered as
-a state).
+Now let’s see what happens when we consider two words in a state, and
+also involve the period at the end (ignoring mid-sentence punctuation,
+each symbol counts as a state regardless of the number of words
+considered as a state).
 
 ``` r
+# Function ignores mid-sentence punctuation (the comma)
 # Create transition probability matrix
 get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', punct='end')
 #>             . brown fox fox jumps jumps over lazy dog over the quick brown
@@ -110,8 +111,8 @@ get.transition.matrix.text(sentence, 2, option='prob', output_type='matrix', pun
 
 We can also use the output of `get.transitions.text` (for text data) or
 `get.transitions` (for non-text), which return a dataframe of state
-transitions and their probabilities, with to get a state transition
-diagram:
+transitions and their probabilities, with
+`igraph::graph_from_data_frame` to get a state transition diagram:
 
 ``` r
 library(magrittr)
